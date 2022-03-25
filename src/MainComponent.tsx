@@ -1,6 +1,6 @@
 import { createStyles } from "@mantine/core";
 import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
+import { Header } from "./components/Header";
 
 const useStyles = createStyles((theme, _params, getRef) => {
 	const dark = theme.colorScheme === 'dark';
@@ -20,7 +20,12 @@ function MainComponent() {
 	const { classes } = useStyles();
 	return (
 		<div className={classes.main}>
-			<Navbar />
+			<Header links={[
+				{
+					link: '/',
+					label: 'Home'
+				}
+			]} />
 			<Footer />
 		</div>
 	)

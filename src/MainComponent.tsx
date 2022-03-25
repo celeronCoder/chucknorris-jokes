@@ -1,13 +1,13 @@
 import { createStyles } from "@mantine/core";
-import Footer from "./components/Footer";
-import { Header } from "./components/Header";
+import {Footer, Header, Jokes} from "./components";
 
 const useStyles = createStyles((theme, _params, getRef) => {
 	const dark = theme.colorScheme === 'dark';
 	return {
 		main: {
 			backgroundColor: dark ? theme.colors.gray[8] : theme.white,
-			height: '100vh',
+			height: '100%',
+			minHeight: '100vh',
 			width: '100%',
 			display: 'flex',
 			justifyContent: 'space-between',
@@ -26,6 +26,7 @@ function MainComponent() {
 					label: 'Home'
 				}
 			]} />
+			<Jokes />
 			<Footer />
 		</div>
 	)

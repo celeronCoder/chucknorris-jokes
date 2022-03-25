@@ -82,7 +82,7 @@ interface HeaderProps {
 	links: { link: string; label: string }[];
 }
 
-export function Header({ links }: HeaderProps) {
+export default function Header({ links }: HeaderProps) {
 	const [opened, toggleOpened] = useBooleanToggle(false);
 	const [active, setActive] = useState(links[0].link);
 	const { classes, cx } = useStyles();
@@ -105,28 +105,28 @@ export function Header({ links }: HeaderProps) {
 	return (
 		<HeaderMantine height={HEADER_HEIGHT} mb={120} className={classes.root}>
 			<Container className={classes.header}>
-			<Logo />
-			<Group spacing={5} className={classes.links}>
-				{items}
-				<SegmentedToggle />
-			</Group>
-
-
-			<Burger
-				opened={opened}
-				onClick={() => toggleOpened()}
-				className={classes.burger}
-				size="sm"
-			/>
-
-			<Transition transition="pop-top-right" duration={200} mounted={opened}>
-				{(styles) => (
-				<Paper className={classes.dropdown} withBorder style={styles}>
+				<Logo/>
+				<Group spacing={5} className={classes.links}>
 					{items}
 					<SegmentedToggle />
-				</Paper>
-				)}
-			</Transition>
+				</Group>
+
+
+				<Burger
+					opened={opened}
+					onClick={() => toggleOpened()}
+					className={classes.burger}
+					size="sm"
+				/>
+
+				<Transition transition="pop-top-right" duration={200} mounted={opened}>
+					{(styles) => (
+					<Paper className={classes.dropdown} withBorder style={styles}>
+						{items}
+						<SegmentedToggle />
+					</Paper>
+					)}
+				</Transition>
 			</Container>
 		</HeaderMantine>
 	);

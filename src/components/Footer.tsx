@@ -1,50 +1,52 @@
-import { createStyles, Text } from "@mantine/core";
+import { createStyles, Container, Group, ActionIcon } from '@mantine/core';
+import Logo from './Logo';
 import { FiGithub, FiTwitter } from "react-icons/fi";
 import { AiOutlineApi } from "react-icons/ai";
 
-const useStyles = createStyles((theme, _params, getRef) => ({
-		footer: {
-			backgroundColor: "#F05A25",
-			color: theme.white,
-			display: 'flex',
-			alignItems: 'center',
-			justifyContent: 'space-around',
-			flexDirection: 'column'
+const useStyles = createStyles((theme) => ({
+	footer: {
+		marginTop: 20,
+		borderTop: `1px solid ${
+			theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[2]
+		}`,
+	},
+
+	inner: {
+		display: 'flex',
+		justifyContent: 'space-between',
+		alignItems: 'center',
+
+		[theme.fn.smallerThan('xs')]: {
+			flexDirection: 'column',
 		},
-		logo: {
-			fontSize: '1.2em'
+	},
+
+	links: {
+		[theme.fn.smallerThan('xs')]: {
+			marginTop: theme.spacing.md,
 		},
-		socials: {
-			display: 'flex',
-			alignItems: 'center',
-			justifyContent: 'space-evenly',
-		},
-		copyright: {
-			color: theme.colors.gray[4]
-		}
+	},
 }));
 
-function Footer() {
+export default function FooterSocial() {
 	const { classes } = useStyles();
+
 	return (
 		<div className={classes.footer}>
-			<p className={classes.logo}>ChuckNorris Jokes</p>
-			<div>
-				<Text size="xl" mr={10} variant="link" component="a" href="https://twitter.com/MatChilling">
-					<FiTwitter color="white" />
-				</Text>
-				<Text mr={10} size="xl" variant="link" component="a" href="https://github.com/chucknorris-io">
-					<FiGithub color="white" />
-				</Text>
-				<Text mr={10} size="xl" variant="link" component="a" href="https://api.chucknorris.io/">
-					<AiOutlineApi color="white" />
-				</Text>
-			</div>
-			<p className={classes.copyright}>
-				Copyright &#169; 2020 ChuckNorris Jokes
-			</p>
+			<Container className={classes.inner}>
+				<Logo/>
+				<Group spacing={0} className={classes.links} position="right" noWrap>
+					<ActionIcon size="lg">
+						<FiTwitter size={18} />
+					</ActionIcon>
+					<ActionIcon size="lg">
+						<FiGithub size={18} />
+					</ActionIcon>
+					<ActionIcon size="lg">
+						<AiOutlineApi size={18} />
+					</ActionIcon>
+				</Group>
+			</Container>
 		</div>
 	);
 }
-
-export default Footer;

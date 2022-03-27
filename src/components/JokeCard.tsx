@@ -27,21 +27,27 @@ function CardContent({ joke, theme }: { joke: Joke; theme: MantineTheme }) {
 				<Avatar src={joke.icon_url} alt="chuck norris" />
 			</Card.Section>
 
-			<Text
-				style={{
-					lineHeight: 2,
-					fontFamily: `'Mali', cursive`,
-					fontWeight: "bold",
-				}}
-				mt={10}
-				size="sm"
-			>
-				{joke.value}
-			</Text>
+			<Card.Section>
+				<Text
+					style={{
+						lineHeight: 2,
+						fontFamily: `'Mali', cursive`,
+						fontWeight: "bold",
+					}}
+					mt={10}
+					size="sm"
+				>
+					{joke.value}
+				</Text>
+			</Card.Section>
 
 			<Group
 				position="right"
-				style={{ marginBottom: 5, marginTop: theme.spacing.sm }}
+				style={{
+					marginBottom: 5,
+					marginTop: theme.spacing.sm,
+					alignSelf: "flex-end",
+				}}
 			>
 				<Badge
 					variant="gradient"
@@ -86,7 +92,19 @@ export default function JokeCard() {
 	}, []);
 
 	return (
-		<Card shadow="sm" p="xl" target="_blank" component="a" href={joke.url}>
+		<Card
+			style={{
+				display: "flex",
+				flexDirection: "column",
+				alignItems: "center",
+				justifyContent: "space-between",
+			}}
+			shadow="sm"
+			p="xl"
+			target="_blank"
+			component="a"
+			href={joke.url}
+		>
 			{joke.value !== "" ? (
 				<CardContent joke={joke} theme={theme} />
 			) : (

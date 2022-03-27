@@ -43,13 +43,25 @@ export default function FooterSocial() {
 					position="right"
 					noWrap
 				>
-					<ActionIcon size="lg">
+					<ActionIcon
+						size="lg"
+						component="a"
+						href="https://twitter.com/celeronCoder"
+					>
 						<FiTwitter size={18} />
 					</ActionIcon>
-					<ActionIcon size="lg">
+					<ActionIcon
+						size="lg"
+						component="a"
+						href="https://github.com/celeronCoder/chucknorris-jokes"
+					>
 						<FiGithub size={18} />
 					</ActionIcon>
-					<ActionIcon size="lg">
+					<ActionIcon
+						size="lg"
+						component="a"
+						href="https://api.chucknorris.io"
+					>
 						<AiOutlineApi size={18} />
 					</ActionIcon>
 				</Group>

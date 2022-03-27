@@ -35,7 +35,7 @@ function CardContent({ joke, theme }: { joke: Joke; theme: MantineTheme }) {
 						fontWeight: "bold",
 					}}
 					mt={10}
-					size="sm"
+					size="md"
 				>
 					{joke.value}
 				</Text>

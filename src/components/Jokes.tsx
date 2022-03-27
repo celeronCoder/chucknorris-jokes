@@ -1,4 +1,5 @@
 import { Container, createStyles, SimpleGrid } from "@mantine/core";
+import { createRange } from "../utils/helper";
 import JokeCard from "./JokeCard";
 
 // eslint-disable-next-line no-unused-vars
@@ -13,22 +14,6 @@ const useStyles = createStyles((_theme) => ({
 		flex: 1,
 	},
 }));
-
-interface CreateRangeProps {
-	from?: number;
-	to: number;
-	step?: number;
-	length?: number;
-}
-
-function createRange({
-	from = 0,
-	to,
-	step = 1,
-	length = Math.ceil((to - from) / step),
-}: CreateRangeProps) {
-	return Array.from({ length }, (_, i) => from + i * step);
-}
 
 export default function Jokes() {
 	const { classes } = useStyles();

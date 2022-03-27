@@ -8,25 +8,8 @@ import {
 } from "@mantine/core";
 import { useEffect, useState } from "react";
 import axios from "../axios";
-
-interface Joke {
-	categories: string[] | never[];
-	created_at: string;
-	icon_url: string;
-	id: string;
-	updated_at: string;
-	url: string;
-	value: string;
-}
-
-function getDate(iso: string): string {
-	const date = new Date(iso);
-	const mm = String(date.getMonth() + 1).padStart(2, "0");
-	const dd = String(date.getDate()).padStart(2, "0");
-	const yyyy = date.getFullYear();
-
-	return `${dd}/${mm}/${yyyy}`;
-}
+import { Joke } from "../interfaces/data";
+import { getDate } from "../utils/helper";
 
 export default function JokeCard() {
 	const [joke, setJoke] = useState<Joke>({

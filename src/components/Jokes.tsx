@@ -1,5 +1,4 @@
 import {
-	ActionIcon,
 	Container,
 	createStyles,
 	MultiSelect,
@@ -7,11 +6,10 @@ import {
 	SimpleGrid,
 } from "@mantine/core";
 import { useEffect, useState } from "react";
-import { BiArrowToTop } from "react-icons/bi";
-import { useWindowScroll } from "@mantine/hooks";
 import { capitalizeFirstLetter, createRange } from "../utils/helper";
 import JokeCard from "./JokeCard";
 import axios from "../axios";
+import BackToTop from "./BackToTop";
 
 // eslint-disable-next-line no-unused-vars
 const useStyles = createStyles((_theme) => ({
@@ -25,20 +23,12 @@ const useStyles = createStyles((_theme) => ({
 	grid: {
 		flex: 1,
 	},
-	backToTop: {
-		fontSize: "2em",
-		marginTop: "1em",
-		alignSelf: "center",
-		color: "#F05B24",
-	},
 }));
 
 export default function Jokes() {
 	const { classes } = useStyles();
 	const [categories, setCategories] = useState<SelectItem[]>();
 	const [selectedCategories, setSelectedCategories] = useState<string[]>();
-	// eslint-disable-next-line no-unused-vars
-	const [_, scrollTo] = useWindowScroll();
 
 	useEffect(() => {
 		(async function fetchCategories() {
@@ -86,13 +76,7 @@ export default function Jokes() {
 					<JokeCard categories={selectedCategories} />
 				))}
 			</SimpleGrid>
-			<ActionIcon
-				variant="hover"
-				className={classes.backToTop}
-				onClick={() => scrollTo({ y: 0 })}
-			>
-				<BiArrowToTop />
-			</ActionIcon>
+			<BackToTop />
 		</Container>
 	);
 }

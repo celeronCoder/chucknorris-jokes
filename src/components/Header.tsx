@@ -18,6 +18,7 @@ const useStyles = createStyles((theme) => ({
 	root: {
 		position: "relative",
 		zIndex: 1,
+		marginBottom: "2em",
 	},
 
 	dropdown: {
@@ -121,7 +122,7 @@ export default function Header({ links }: HeaderProps) {
 	));
 
 	return (
-		<HeaderMantine height={HEADER_HEIGHT} mb={120} className={classes.root}>
+		<HeaderMantine height={HEADER_HEIGHT} className={classes.root}>
 			<Container className={classes.header}>
 				<Logo />
 				<Group spacing={5} className={classes.links}>

@@ -82,7 +82,7 @@ export default function Jokes() {
 					{ maxWidth: "xs", cols: 1, spacing: "sm" },
 				]}
 			>
-				{createRange({ to: 15 }).map(() => (
+				{createRange({ to: 30 }).map(() => (
 					<JokeCard categories={selectedCategories} />
 				))}
 			</SimpleGrid>

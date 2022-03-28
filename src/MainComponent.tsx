@@ -20,14 +20,7 @@ function MainComponent() {
 	const { classes } = useStyles();
 	return (
 		<div className={classes.main}>
-			<Header
-				links={[
-					{
-						link: "/",
-						label: "Home",
-					},
-				]}
-			/>
+			<Header />
 			<Jokes />
 			<Footer />
 		</div>

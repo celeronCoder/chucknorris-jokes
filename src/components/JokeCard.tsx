@@ -70,7 +70,11 @@ function CardContent({ joke, theme }: { joke: Joke; theme: MantineTheme }) {
 	);
 }
 
-export default function JokeCard() {
+interface JokeCardProps {
+	categories?: string[];
+}
+
+export default function JokeCard({ categories }: JokeCardProps) {
 	const [joke, setJoke] = useState<Joke>({
 		categories: [],
 		created_at: "",
@@ -84,12 +88,25 @@ export default function JokeCard() {
 
 	useEffect(() => {
 		(async function fetchJoke() {
-			const { data, status } = await axios.get("/random");
-			if (status === 200 && data) {
-				setJoke(data);
+			if (categories && categories.length > 0) {
+				const { data, status } = await axios.get(
+					`/random?category=${
+						categories[
+							Math.floor(Math.random() * categories.length)
+						]
+					}`
+				);
+				if (status === 200 && data) {
+					setJoke(data);
+				}
+			} else {
+				const { data, status } = await axios.get("/random");
+				if (status === 200 && data) {
+					setJoke(data);
+				}
 			}
 		})();
-	}, []);
+	}, [categories]);
 
 	return (
 		<Card
